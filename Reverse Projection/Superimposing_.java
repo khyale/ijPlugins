@@ -128,11 +128,13 @@ public class Superimposing_ implements ExtendedPlugInFilter, DialogListener {
                     imp.getWidth()+"x"+imp.getHeight()+") to blend with");
             return DONE;
         }
-        GenericDialog gd = new GenericDialog(command+"...");
+        //GenericDialog gd = new GenericDialog(command+"...");
+        GenericDialog gd = new GenericDialog("Superimposing");
         gd.addMessage("Image 1: "+imp.getTitle());
         gd.addChoice("Image 2:", suitableImages, image2name);
+        //gd.addNumericField("Weight 2", weight2, 3);
+        gd.addSlider("Opacity: ", 0.0, 1.0, 0.5); 
         gd.addCheckbox("Fix Weight 1 = 1", fixWeight1);
-        gd.addNumericField("Weight 2", weight2, 3);
         gd.addPreviewCheckbox(pfr);
         gd.addDialogListener(this);
         gd.showDialog();                            // user input (or reading from macro) happens here
